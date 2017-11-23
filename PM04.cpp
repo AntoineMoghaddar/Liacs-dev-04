@@ -27,13 +27,9 @@ int main()
 		mainMenu();
 		cin >> opt;
 	}
-cout << "dit is een test lalalalalalal"
     return 0;
 }
 
-
-int testmethod(){
-}
 int print(){
 
 }

@@ -3,16 +3,16 @@
 
 #include "stdafx.h"
 #include <iostream>
-using namespace std; 
+using namespace std;
 
 void mainMenu();
 
 int main()
 {
 	mainMenu();
-	int opt; 
-	cin >> opt; 
-	while(opt != 9) { 
+	int opt;
+	cin >> opt;
+	while(opt != 9) {
 		switch (opt) {
 		case 1: break;
 		case 2: break;
@@ -24,14 +24,16 @@ int main()
 		case 8: break;
 		default: cout << "Rather use a valid option" << endl;  break;
 		}
-		mainMenu(); 
+		mainMenu();
 		cin >> opt;
 	}
-	cout << "Have a nice day!" << endl; 
-
+cout << "dit is een test lalalalalalal"
     return 0;
 }
 
+
+int testmethod(){
+}
 int print(){
 
 }

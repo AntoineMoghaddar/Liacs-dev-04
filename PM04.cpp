@@ -16,9 +16,9 @@ public:
     Grootgetal *A = NULL, *B = NULL, *C = NULL, *Aa = NULL, *Bb = NULL, *Cc = NULL;
 };
 
-void afdrukken ( Grootgetal* uitgang ) // Basically om van achter naar voren, spoiler alert het werkt niet
+void afdrukken ( Grootgetal* ingang ) // Basically om van achter naar voren, spoiler alert het werkt niet
 {
-    Grootgetal* p = uitgang;
+    Grootgetal* p = ingang;
     while ( p != NULL )
         cout << p->info << " ";
 }
@@ -27,7 +27,7 @@ void getal( Grootgetal* & ingang, Grootgetal* & uitgang )// pointer gedoe, werk 
 {
     int i, j, n, getal;
     char opt;
-    Grootgetal* p, *q;
+    Grootgetal* p;
     cin.get(opt);
     while( opt == '\n' )
         cin.get(opt);
@@ -49,14 +49,11 @@ void getal( Grootgetal* & ingang, Grootgetal* & uitgang )// pointer gedoe, werk 
             else if ( opt == '9' ) { getal = 10 * getal + 9; n++; }
             if( j == 3 && (opt == '\n','0','1','2','3','4','5','6','7','8','9') )
             {
-                q = new Grootgetal;// tbh ik heb geen idee of dit pointer gedoe
-                q->info = getal;   // klopt... it works thooo
-                q->volgende = ingang;
-                q->vorige = uitgang;
-                ingang = q;
-                uitgang = p;
-                cout << q->info << " ";
-                p = q;
+                p = new Grootgetal;// tbh ik heb geen idee of dit pointer gedoe
+                p->info = getal;   // klopt... it works thooo
+                p->volgende = ingang;
+                ingang = p;
+                cout << p->info << " ";
             }
             if( opt != '\n' ) cin.get(opt);
         }

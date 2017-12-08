@@ -6,8 +6,6 @@
 
 using namespace std;
 
-// Soooo het lukt niet echt, dit heb ik tot nu. Ik heb wel een idee hoe die functie moet werken but evvhvhggfc tfv.
-
 class Grootgetal
 {
 public:

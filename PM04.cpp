@@ -16,7 +16,7 @@ public:
     Grootgetal *A = NULL, *B = NULL, *C = NULL, *Aa = NULL, *Bb = NULL, *Cc = NULL;
 };
 
-void afdrukken ( Grootgetal* uitgang ) // Basically om van achter naar voren, spoiler alert het werkt niet
+void afdrukken ( Grootgetal* uitgang ) // Basically om van achter naar voren, spoiler alert het werkt niet ignore it
 {
     Grootgetal* p = uitgang;
     while ( p != NULL )
@@ -93,8 +93,8 @@ void getall( Grootgetal* & ingang, Grootgetal* & uitgang )// pointer gedoe, werk
             }
             if( j == 3 && (opt == '\n','0','1','2','3','4','5','6','7','8','9') )
             {
-                p = new Grootgetal;// tbh ik heb geen idee of dit pointer gedoe
-                p->info = getal;   // klopt... it works thooo
+                p = new Grootgetal;
+                p->info = getal;
                 p->volgende = ingang;
                 p->vorige = uitgang;
                 ingang = p;
@@ -106,7 +106,7 @@ void getall( Grootgetal* & ingang, Grootgetal* & uitgang )// pointer gedoe, werk
     cout << "n = " << n << endl << endl;
 }
 
-void kies() //menuuuuuutje
+void kies() //menuuuuuutje ignore it
 {
     Grootgetal *A = NULL, *B = NULL, *C = NULL, *Aa = NULL, *Bb = NULL, *Cc = NULL;
     char opt = 'x';
@@ -133,7 +133,7 @@ void kies() //menuuuuuutje
     }
 }
 
-void kies2() // nog een menuuutje
+void kies2() // nog een menuuutje ook ignoren
 {
     Grootgetal *Aa, *Bb, *Cc;
     char opt = 'x';
@@ -160,7 +160,7 @@ void kies2() // nog een menuuutje
     }
 }
 
-void menu() // De Menu
+void menu() // De Menu ignore
 {
     char opt = 'x';
     while( opt  != 'S' && opt != 's' )
@@ -186,13 +186,13 @@ void menu() // De Menu
     }
 }
 
-int main() // main
+int main() // main, heb alles hier n beetje gedaan, this is where the magic happens
 {
     Grootgetal *A = NULL, *B = NULL, *C = NULL, *Aa = NULL, *Bb = NULL, *Cc = NULL, *p, *pp, *q, *qq, *r, *k, *kk, *l, *ll;
     char optA, optB;
     int a, b, aanta = 0, aantb = 0, j, optel, getal;
 
-    cout << "A:" << endl;
+    cout << "A:" << endl; //getal A invoeren,
     cin.get( optA );
     while( optA == '\n' )
         cin.get(optA);
@@ -254,8 +254,8 @@ int main() // main
             }
             if( j == 3 && (optA == '\n','0','1','2','3','4','5','6','7','8','9') )
             {
-                p = new Grootgetal;// tbh ik heb geen idee of dit pointer gedoe
-                p->info = getal;   // klopt... it works thooo
+                p = new Grootgetal;
+                p->info = getal;
                 p->volgende = A;
                 A = p;
                 cout << p->info << " ";
@@ -266,23 +266,29 @@ int main() // main
     }
     cout << "\ta = " << a << "\taanta= " << aanta << endl;
 
-    cout << "A2: " << endl;
-    int aa = 1, aaa = 10000;
+    //hieronder een stukje code om de pointer lijstje van A zo
+    //aan te passen, dat die... ehh basically moet die bv dit
+    //doen: 1152 6671 12 wordt 11 5266 7112. hier ligt wel een
+    //bug in dus heb ik hem der maar buiten gelaten.
+
+    /*cout << "A2: " << endl;
+    int aa = 1, aaa = 1;
     p = A;
-    for ( j = 1; j < (4 - a); j++ )
+    for ( j = 0; j < (4 - a); j++ )
         aa *=10;
-        aaa /= 10;
+    for ( j = 0; j < a; j++ )
+        aaa *= 10;
     while( p != NULL )
     {
         pp = p->volgende;
         p->info = p->info + ((pp->info%aa)*aaa);
-        /*if( pp->volgende != NULL )*/ pp->info = pp->info/aa;
-        /*else*/ pp->info = pp->info;
+        if( pp->volgende != NULL ) pp->info = pp->info/aa;
+        else pp->info = pp->info;
         cout << p->info << " ";
         p = pp;
-    }
+    }*/
 
-    cout << endl << "B:" << endl;
+    cout << endl << "B:" << endl; //getal B in voeren
     cin.get( optB );
     while( optB == '\n' )
         cin.get(optB);
@@ -344,8 +350,8 @@ int main() // main
             }
             if( j == 3 && (optB == '\n','0','1','2','3','4','5','6','7','8','9') )
             {
-                q = new Grootgetal;// tbh ik heb geen idee of dit pointer gedoe
-                q->info = getal;   // klopt... it works thooo
+                q = new Grootgetal;
+                q->info = getal;
                 q->volgende = B;
                 B = q;
                 cout << q->info << " ";
@@ -356,30 +362,45 @@ int main() // main
     }
     cout << "\tb = " << b << "\taantb= " << aantb << endl;
 
-        cout << "B2: " << endl;
-    int bb = 1, bbb = 10000;
+    //basically 1152 6671 12 wordt 11 5266 7112 voor getal B.
+    //met ht zelfde proleem.
+
+    /*cout << "B2: " << endl;
+    int bb = 1, bbb = 1;
     q = B;
-    for ( j = 1; j < (4 - a); j++ )
+    for ( j = 1; j < (4 - b); j++ )
         bb *=10;
-        bbb /= 10;
+    for ( j = 1; j < b; j++ )
+        bbb *= 10;
     while( q != NULL )
     {
         qq = q->volgende;
         q->info = q->info + ((qq->info%bb)*bbb);
-        /*if( pp->volgende != NULL )*/ qq->info = qq->info/bb;
-        /*else*/ qq->info = qq->info;
+        if( pp->volgende != NULL ) qq->info = qq->info/bb;
+        else qq->info = qq->info;
         cout << q->info << " ";
         q = qq;
-    }
+    }*/
 
-    /*cout << endl << "C:" << endl;
-    int aa = 1;
-    int bb = 1;
-    int xx, yy;
+    //en dit is de optel functie. het optellen gaat zover ik weet goed
+    //eerst doet die dit gedoe; 1152 6671 12 wordt 11 5266 7112, dus
+    //zijn de lapjes code hierboven niet nodig, maar ik heb het toch
+    //maar laten staan for testing purposes. hij telt alleen de eerste
+    //vakjes op, maar daarna draait de programma niet meer. ook wordt
+    //in de verkeerde volgorde geprint... but that shouldnt be hard to
+    //fix right? ow en de "bla-en zijn for testing purposes.
+
+    cout << endl << "C:" << endl;
+    int aa = 1, aaa = 1, bb = 1, bbb = 1;
+    int xx, yy, xxx, yyy;
     for ( j = 1; j < (4 - a); j++ )
         aa *=10;
+    for ( j = 0; j < a; j++ )
+        aaa *= 10;
     for ( j = 1; j < (4 - b); j++ )
         bb *=10;
+    for ( j = 0; j < b; j++ )
+        bbb *= 10;
     int rest = 0;
     if( aanta < aantb )
     {
@@ -387,6 +408,8 @@ int main() // main
         l = q;
         xx = aa;
         yy = bb;
+        xxx = aaa;
+        yyy = bbb;
     }
     else
     {
@@ -394,6 +417,8 @@ int main() // main
         l = p;
         yy = aa;
         xx = bb;
+        yyy = aaa;
+        xxx = bbb;
     }
     while( l != NULL )
     {
@@ -402,23 +427,23 @@ int main() // main
         {
             cout << "bla2" << endl;
             kk = k->volgende;
-            k->info = k->info + ((kk->info%xx)*xx);
-            if( kk->info != NULL ) kk->info = kk->info/xx;
+            k->info = k->info + ((kk->info%xx)*xxx);
+            if( kk->info != NULL ) kk->info = kk->info/xxx;
             else kk->info = kk->info;
 
             ll = l->volgende;
-            l->info = l->info + ((l->info%yy)*yy);
-            if( ll->info != NULL ) ll->info = ll->info/yy;
+            l->info = l->info + ((l->info%yy)*yyy);
+            if( ll->info != NULL ) ll->info = ll->info/yyy;
             else ll->info = ll->info;
 
             r = new Grootgetal;
             r->info = (k->info + l->info)%10000 + rest;
-            rest = (k->info + l->info)/10000;
+            rest = (r->info)/10000;
             r->volgende = C;
             C = r;
             cout << r->info << " ";
-            k = kk;
-            l = ll;
+            k = k->volgende;
+            l = l->volgende;
             r = r->volgende;
         }
 
@@ -436,11 +461,12 @@ int main() // main
     cout << r->info << " ";
     l = ll;
     r = r->volgende;
-    }*/
+    }
 }
 
-// So yea je hebt waarschijnlijk hier niks aan, but yea, if you got any tips and tricks thats always welcome hehehe.
-
+//but yea ik hoop dat dit iets is, heb niet met classes gewerkt
+//omdat... idk actually, vond dit fijner werken. als je nog vragen
+//heb en hulp nodig heb. let me knoww.
 
 // PM04.cpp : Defines the entry point for the console application.
 //
@@ -535,4 +561,3 @@ void mainMenu()
     cout << "__________________________________" << endl << "\t      PM04" << endl << "    What action do you demand?" << endl << "__________________________________"
          << endl << "\n 1) print \t 5) vermenigvuldig \n 2) telop \t 6) fibonacci \n 3) leesin  \t 7) voegachter \n 4) maakeen \t 8) vernietig \n \n 9) Stoppen" << endl << "__________________________________" << endl << "Number: " << endl;
 }*/
-
